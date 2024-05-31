@@ -1,12 +1,15 @@
 {
   "name": "card-master",
-  "version": "0.1.0",
-  "description": "",
+  "version": "1.0.0",
+  "description": "A Library that abstracts deck of cards api",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
 }

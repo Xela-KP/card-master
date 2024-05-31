@@ -48,3 +48,203 @@ We welcome contributions to this package! Please feel free to open pull requests
 ## License
 
 This package is licensed under the MIT License (refer to LICENSE file for details).
+
+## Example Usage
+
+**1. Creating Decks:**
+
+* **New Deck with Shuffle (Default 1 Deck):**
+
+```javascript
+const { createNewDeck } = require('./deck-of-cards.js'); // Assuming your file is named deck-of-cards.js
+
+(async () => {
+  try {
+    const newDeck = await createNewDeck(true);
+    console.log(newDeck); // This will log the data for the new shuffled deck
+  } catch (error) {
+    console.error(error);
+  }
+})();
+```
+
+* **New Deck with Jokers (No Shuffle):**
+
+```javascript
+const { createNewDeck } = require('./deck-of-cards.js');
+
+(async () => {
+  try {
+    const newDeck = await createNewDeck(false, true); // shuffled = false, jokersEnabled = true
+    console.log(newDeck); // This will log the data for the new deck with jokers
+  } catch (error) {
+    console.error(error);
+  }
+})();
+```
+
+* **New Deck with Specific Number (Shuffled):**
+
+```javascript
+const { createNewDeck } = require('./deck-of-cards.js');
+
+(async () => {
+  try {
+    const newDeck = await createNewDeck(true, false, 2); // shuffled, jokers disabled, 2 decks
+    console.log(newDeck); // This will log the data for the 2 shuffled decks
+  } catch (error) {
+    console.error(error);
+  }
+})();
+```
+
+**2. Creating Piles and Decks with Specific Cards:**
+
+* **New Pile in Existing Deck (Default Cards):**
+
+```javascript
+const { createNewDeck, createNewPile } = require('./deck-of-cards.js');
+
+(async () => {
+  try {
+    const newDeck = await createNewDeck();
+    const pileName = "myPile";
+    const newPile = await createNewPile(newDeck, pileName);
+    console.log(newPile); // This will log the data for the new pile "myPile"
+  } catch (error) {
+    console.error(error);
+  }
+})();
+```
+
+* **New Deck with Partial Cards (No Shuffle):**
+
+```javascript
+const { createPartialDeck } = require('./deck-of-cards.js');
+
+(async () => {
+  try {
+    const customCards = ["AS", "KC", "5H", "JS"]; // Select your custom cards
+    const newDeck = await createPartialDeck(false, customCards);
+    console.log(newDeck); // This will log the data for the new deck with custom cards (not shuffled)
+  } catch (error) {
+    console.error(error);
+  }
+})();
+```
+
+**3. Working with Piles:**
+
+* **List Cards in a Pile:**
+
+```javascript
+const { listPile, createNewDeck, createNewPile } = require('./deck-of-cards.js');
+
+(async () => {
+  try {
+    const newDeck = await createNewDeck();
+    const pileName = "myPile";
+    await createNewPile(newDeck, pileName, "AD,KH"); // Add some cards to the pile
+
+    const pileData = await listPile(newDeck, pileName);
+    console.log(pileData); // This will log the contents of the pile "myPile"
+  } catch (error) {
+    console.error(error);
+  }
+})();
+```
+
+* **Drawing Cards from a Pile (Specify Number):**
+
+```javascript
+const { drawFromPile, createNewDeck, createNewPile } = require('./deck-of-cards.js');
+
+(async () => {
+  try {
+    const newDeck = await createNewDeck();
+    const pileName = "myPile";
+    await createNewPile(newDeck, pileName, "AD,KH,QS"); // Add some cards to the pile
+
+    const drawnCards = await drawFromPile(newDeck, pileName, { count: 2 }); // Draw 2 cards
+    console.log(drawnCards); // This will log the data for the 2 drawn cards
+  } catch (error) {
+    console.error(error);
+  }
+})();
+```
+
+**4. Drawing and Returning Cards:**
+
+* **Drawing a Card from a Deck:**
+
+```javascript
+const { draw, createNewDeck } = require('./deck-of-cards.js');
+
+(async () => {
+  try {
+    const newDeck = await createNewDeck();
+    const drawnCard = await draw(newDeck);
+    console.log(drawnCard); // This will log the data for the drawn card
+  } catch (error) {
+    console.error(error);
+  }
+})();
+```
+
+* **Returning a Card to the Deck:**
+
+```javascript
+const { draw, returnToDeck } = require('./deck-of-cards.js');
+
+(async () => {
+  try {
+    const newDeck = await createNewDeck();
+    const drawnCard = await draw(newDeck);
+    const cardCode = drawnCard.cards[0].code; // Get the code of the drawn card
+
+    await returnToDeck(newDeck, cardCode);
+    console.log("Card returned to the deck!");
+  } catch (error) {
+    console.error(error);
+  }
+})();
+```
+
+**5. Shuffling Decks and Piles:**
+
+* **Shuffling an Existing Deck:**
+
+```javascript
+const { shuffleDeck, createNewDeck } = require('./deck-of-cards.js');
+
+(async () => {
+  try {
+    const newDeck = await createNewDeck();
+    const shuffledDeck = await shuffleDeck(newDeck);
+    console.log("Deck shuffled!"); // Data will be the same deck object, but shuffled
+  } catch (error) {
+    console.error(error);
+  }
+})();
+```
+
+* **Shuffling a Pile:**
+
+```javascript
+const { shufflePile, createNewDeck, createNewPile } = require('./deck-of-cards.js');
+
+(async () => {
+  try {
+    const newDeck = await createNewDeck();
+    const pileName = "myPile";
+    await createNewPile(newDeck, pileName);
+
+    const shuffledPile = await shufflePile(newDeck, pileName);
+    console.log("Pile shuffled!"); // Data will be the pile data after shuffling
+  } catch (error) {
+    console.error(error);
+  }
+})();
+```
+
+* Refer to the Deck of Cards API documentation ([https://www.deckofcardsapi.com/](https://www.deckofcardsapi.com/)) for more details on available options and functionalities.

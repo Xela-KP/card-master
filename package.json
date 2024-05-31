@@ -1,6 +1,6 @@
 {
   "name": "card-master",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A Library that abstracts deck of cards api",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

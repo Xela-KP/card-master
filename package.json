@@ -3,6 +3,7 @@
   "version": "1.0.2",
   "description": "A Library that abstracts deck of cards api",
   "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "type": "module",
   "scripts": {

@@ -1,11 +1,11 @@
 {
   "name": "card-master",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A Library that abstracts deck of cards api",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "type": "module",
+  "type": "commonjs",
   "repository": {
     "type": "git",
     "url": "https://github.com/Xela-KP/card-master.git"
@@ -28,6 +28,7 @@
     "access": "public"
   },
   "devDependencies": {
+    "@types/node": "^20.12.13",
     "typescript": "^5.4.5"
   },
   "dependencies": {

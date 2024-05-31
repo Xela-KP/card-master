@@ -15,7 +15,7 @@ class MissingPileError extends Error {
   }
 }
 
-/** 
+/**
  * Interface representing a deck of cards from the Deck of Cards API.
  * Properties might vary depending on the API response.
  */
@@ -26,14 +26,14 @@ type Deck = {
 
 /**
  * Creates a new shuffled (optional) deck with jokers (optional) and a specified number of decks (defaults to 1).
- * 
+ *
  * @param {boolean} shuffled - Whether to shuffle the deck (defaults to false).
  * @param {boolean} jokersEnabled - Whether to include jokers in the deck (defaults to false).
  * @param {number} count - The number of decks to create (defaults to 1).
  * @returns {Promise<object>} - A promise resolving to the deck data as a JSON object.
  * @throws {Error} - On network errors or unexpected API responses.
  */
-export const createNewDeck = async (
+const createNewDeck = async (
   shuffled = false,
   jokersEnabled = false,
   count = 1
@@ -55,16 +55,13 @@ export const createNewDeck = async (
 
 /**
  * Creates a new shuffled (optional) deck with a specified list of cards.
- * 
+ *
  * @param {boolean} shuffled - Whether to shuffle the deck (defaults to false).
  * @param {string[]} cards - A list of comma-separated card codes to include in the deck (defaults to a full deck).
  * @returns {Promise<object>} - A promise resolving to the deck data as a JSON object.
  * @throws {Error} - On network errors or unexpected API responses.
  */
-export const createPartialDeck = async (
-  shuffled = false,
-  cards = DEFAULT_CARDS
-) => {
+const createPartialDeck = async (shuffled = false, cards = DEFAULT_CARDS) => {
   console.log("create partial deck");
   try {
     const response = await fetch(
@@ -82,7 +79,7 @@ export const createPartialDeck = async (
 
 /**
  * Creates a new pile named `pileName` within the provided `deck` containing the specified comma-separated list of cards.
- * 
+ *
  * @param {Deck} deck - The deck object representing the deck to add the pile to.
  * @param {string} pileName - The name of the pile to create.
  * @param {string} cards - A comma-separated list of card codes to add to the pile.
@@ -90,11 +87,7 @@ export const createPartialDeck = async (
  * @throws {MissingDeckError} - If `deck` is not provided.
  * @throws {Error} - On network errors or unexpected API responses.
  */
-export const createNewPile = async (
-  deck: Deck,
-  pileName: string,
-  cards: string
-) => {
+const createNewPile = async (deck: Deck, pileName: string, cards: string) => {
   console.log("create new pile");
   try {
     const response = await fetch(
@@ -112,7 +105,7 @@ export const createNewPile = async (
 
 /**
  * Lists the contents of the pile named `pileName` within the provided `deck`.
- * 
+ *
  * @param {Deck} deck - The deck object representing the deck containing the pile.
  * @param {string} pileName - The name of the pile to list.
  * @returns {Promise<object>} - A promise resolving to the pile data as a JSON object.
@@ -120,7 +113,7 @@ export const createNewPile = async (
  * @throws {MissingPileError} - If `pileName` is not provided.
  * @throws {Error} - On network errors or unexpected API responses.
  */
-export const listPile = async (deck: Deck, pileName: string) => {
+const listPile = async (deck: Deck, pileName: string) => {
   console.log("list pile");
   try {
     const response = await fetch(
@@ -138,14 +131,14 @@ export const listPile = async (deck: Deck, pileName: string) => {
 
 /**
  * Draws a specified number of cards (defaults to 1) from the provided `deck`.
- * 
+ *
  * @param {Deck} deck - The deck object representing the deck to draw from.
  * @param {number} count - The number of cards to draw (defaults to 1).
  * @returns {Promise<object>} - A promise resolving to the drawn cards data as a JSON object.
  * @throws {MissingDeckError} - If `deck` is not provided.
  * @throws {Error} - On network errors or unexpected API
  */
-export const draw = async (deck: Deck, count = 1) => {
+const draw = async (deck: Deck, count = 1) => {
   console.log("draw from deck");
   try {
     const response = await fetch(
@@ -163,7 +156,7 @@ export const draw = async (deck: Deck, count = 1) => {
 
 /**
  * Draws cards from the pile named `pileName` within the provided `deck`.
- * 
+ *
  * @param {Deck} deck - The deck object representing the deck containing the pile.
  * @param {string} pileName - The name of the pile to draw from.
  * @param {object | number | string} option - The draw options:
@@ -175,7 +168,7 @@ export const draw = async (deck: Deck, count = 1) => {
  * @throws {MissingPileError} - If `pileName` is not provided.
  * @throws {Error} - On network errors or unexpected API responses.
  */
-export const drawFromPile = async (
+const drawFromPile = async (
   deck: Deck,
   pileName: string,
   option: { count: number } | { cards: string } | string = "bottom"
@@ -203,14 +196,14 @@ export const drawFromPile = async (
 
 /**
  * Returns a specified comma-separated list of cards (optional) to the provided `deck`.
- * 
+ *
  * @param {Deck} deck - The deck object representing the deck to return cards to.
  * @param {string} cards - A comma-separated list of card codes to return (optional).
  * @returns {Promise<object>} - A promise resolving to the deck data as a JSON object.
  * @throws {MissingDeckError} - If `deck` is not provided.
  * @throws {Error} - On network errors or unexpected API responses.
  */
-export const returnToDeck = async (deck: Deck, cards?: string) => {
+const returnToDeck = async (deck: Deck, cards?: string) => {
   console.log("return to deck");
   let url = `https://www.deckofcardsapi.com/api/deck/${deck.deck_id}/return/`;
   if (cards) url += `?cards=${cards}`;
@@ -227,7 +220,7 @@ export const returnToDeck = async (deck: Deck, cards?: string) => {
 
 /**
  * Returns a specified comma-separated list of cards (optional) from the pile named `pileName` within the provided `deck` to the deck.
- * 
+ *
  * @param {Deck} deck - The deck object representing the deck containing the pile.
  * @param {string} pileName - The name of the pile to return cards from.
  * @param {string} cards - A comma-separated list of card codes to return (optional).
@@ -236,11 +229,7 @@ export const returnToDeck = async (deck: Deck, cards?: string) => {
  * @throws {MissingPileError} - If `pileName` is not provided.
  * @throws {Error} - On network errors or unexpected API responses.
  */
-export const returnFromPile = async (
-  deck: Deck,
-  pileName: string,
-  cards?: string
-) => {
+const returnFromPile = async (deck: Deck, pileName: string, cards?: string) => {
   console.log("return from pile");
 
   let url = `https://www.deckofcardsapi.com/api/deck/${deck.deck_id}/pile/${pileName}/return/`;
@@ -257,17 +246,16 @@ export const returnFromPile = async (
   }
 };
 
-
 /**
  * Shuffles the provided `deck`. Optionally shuffles only remaining cards (refer to Deck of Cards API documentation).
- * 
+ *
  * @param {Deck} deck - The deck object representing the deck to shuffle.
  * @param {boolean} remaining - Whether to shuffle only remaining cards (defaults to false).
  * @returns {Promise<object>} - A promise resolving to the deck data as a JSON object.
  * @throws {MissingDeckError} - If `deck` is not provided.
  * @throws {Error} - On network errors or unexpected API responses.
  */
-export const shuffleDeck = async (deck: Deck, remaining = false) => {
+const shuffleDeck = async (deck: Deck, remaining = false) => {
   console.log("shuffle deck");
   try {
     const response = await fetch(
@@ -284,7 +272,7 @@ export const shuffleDeck = async (deck: Deck, remaining = false) => {
 
 /**
  * Shuffles the pile named `pileName` within the provided `deck`.
- * 
+ *
  * @param {Deck} deck - The deck object representing the deck containing the pile.
  * @param {string} pileName - The name of the pile to shuffle.
  * @returns {Promise<object>} - A promise resolving to the pile data as a JSON object.
@@ -292,7 +280,7 @@ export const shuffleDeck = async (deck: Deck, remaining = false) => {
  * @throws {MissingPileError} - If `pileName` is not provided.
  * @throws {Error} - On network errors or unexpected API responses.
  */
-export const shufflePile = async (deck: Deck, pileName: string) => {
+const shufflePile = async (deck: Deck, pileName: string) => {
   console.log("shuffle pile");
   try {
     const response = await fetch(
@@ -306,4 +294,17 @@ export const shufflePile = async (deck: Deck, pileName: string) => {
     if (!pileName) throw new MissingPileError();
     console.error(error);
   }
+};
+
+module.exports = {
+  createNewDeck,
+  createNewPile,
+  createPartialDeck,
+  listPile,
+  draw,
+  drawFromPile,
+  returnToDeck,
+  returnFromPile,
+  shuffleDeck,
+  shufflePile,
 };

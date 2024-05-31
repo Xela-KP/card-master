@@ -38,7 +38,6 @@ const createNewDeck = async (
   jokersEnabled = false,
   count = 1
 ) => {
-  console.log("create new deck(s)");
   try {
     const response = await fetch(
       `https://www.deckofcardsapi.com/api/deck/new/${
@@ -46,7 +45,6 @@ const createNewDeck = async (
       }?jokers_enabled=${jokersEnabled}&deck_count=${count}`
     );
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.error(error);
@@ -62,7 +60,6 @@ const createNewDeck = async (
  * @throws {Error} - On network errors or unexpected API responses.
  */
 const createPartialDeck = async (shuffled = false, cards = DEFAULT_CARDS) => {
-  console.log("create partial deck");
   try {
     const response = await fetch(
       `https://www.deckofcardsapi.com/api/deck/new/${
@@ -70,7 +67,6 @@ const createPartialDeck = async (shuffled = false, cards = DEFAULT_CARDS) => {
       }/?cards=${cards}`
     );
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.error(error);
@@ -88,13 +84,11 @@ const createPartialDeck = async (shuffled = false, cards = DEFAULT_CARDS) => {
  * @throws {Error} - On network errors or unexpected API responses.
  */
 const createNewPile = async (deck: Deck, pileName: string, cards: string) => {
-  console.log("create new pile");
   try {
     const response = await fetch(
       `https://www.deckofcardsapi.com/api/deck/${deck.deck_id}/pile/${pileName}/add/?cards=${cards}`
     );
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     if (!deck) throw new MissingDeckError();
@@ -114,13 +108,11 @@ const createNewPile = async (deck: Deck, pileName: string, cards: string) => {
  * @throws {Error} - On network errors or unexpected API responses.
  */
 const listPile = async (deck: Deck, pileName: string) => {
-  console.log("list pile");
   try {
     const response = await fetch(
       `https://www.deckofcardsapi.com/api/deck/${deck.deck_id}/pile/${pileName}/list/`
     );
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     if (!deck) throw new MissingDeckError();
@@ -139,13 +131,11 @@ const listPile = async (deck: Deck, pileName: string) => {
  * @throws {Error} - On network errors or unexpected API
  */
 const draw = async (deck: Deck, count = 1) => {
-  console.log("draw from deck");
   try {
     const response = await fetch(
       `https://www.deckofcardsapi.com/api/deck/${deck.deck_id}/draw/?count=${count}`
     );
     const data = await response.json();
-    console.log(data);
 
     return data;
   } catch (error) {
@@ -173,20 +163,16 @@ const drawFromPile = async (
   pileName: string,
   option: { count: number } | { cards: string } | string = "bottom"
 ) => {
-  console.log("draw from pile");
   let url = `https://www.deckofcardsapi.com/api/deck/${deck.deck_id}/pile/${pileName}/draw/`;
   if (typeof option === "string") url += option;
   else {
     const [[param, value]] = Object.entries(option);
     url += `?${param}=${value}`;
-    console.log(param, value);
   }
 
-  console.log(url);
   try {
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     if (!deck) throw new MissingDeckError();
@@ -204,13 +190,11 @@ const drawFromPile = async (
  * @throws {Error} - On network errors or unexpected API responses.
  */
 const returnToDeck = async (deck: Deck, cards?: string) => {
-  console.log("return to deck");
   let url = `https://www.deckofcardsapi.com/api/deck/${deck.deck_id}/return/`;
   if (cards) url += `?cards=${cards}`;
   try {
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     if (!deck) throw new MissingDeckError();
@@ -230,14 +214,11 @@ const returnToDeck = async (deck: Deck, cards?: string) => {
  * @throws {Error} - On network errors or unexpected API responses.
  */
 const returnFromPile = async (deck: Deck, pileName: string, cards?: string) => {
-  console.log("return from pile");
-
   let url = `https://www.deckofcardsapi.com/api/deck/${deck.deck_id}/pile/${pileName}/return/`;
   if (cards) url += `?cards=${cards}`;
   try {
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     if (!deck) throw new MissingDeckError();
@@ -256,13 +237,11 @@ const returnFromPile = async (deck: Deck, pileName: string, cards?: string) => {
  * @throws {Error} - On network errors or unexpected API responses.
  */
 const shuffleDeck = async (deck: Deck, remaining = false) => {
-  console.log("shuffle deck");
   try {
     const response = await fetch(
       `https://www.deckofcardsapi.com/api/deck/${deck.deck_id}/shuffle/?remaining=${remaining}`
     );
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     if (!deck) throw new MissingDeckError();
@@ -281,13 +260,11 @@ const shuffleDeck = async (deck: Deck, remaining = false) => {
  * @throws {Error} - On network errors or unexpected API responses.
  */
 const shufflePile = async (deck: Deck, pileName: string) => {
-  console.log("shuffle pile");
   try {
     const response = await fetch(
       `https://www.deckofcardsapi.com/api/deck/${deck.deck_id}/pile/${pileName}/shuffle/`
     );
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     if (!deck) throw new MissingDeckError();

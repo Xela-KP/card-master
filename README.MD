@@ -10,29 +10,29 @@ npm install card-master
 
 ## Usage
 
-The package exports several functions that correspond to different API functionalities. Here's a breakdown of some key functions:
+The package exports several functions that correspond to different API functionalities:
 
 ### Creating Decks
 
 * **`createNewDeck(shuffled = false, jokersEnabled = false, count = 1)`:** Creates a new shuffled (optional) deck with jokers (optional) and a specified number of decks (defaults to 1). Returns a promise resolving to the deck data as a JSON object.
 * **`createPartialDeck(shuffled = false, cards = DEFAULT_CARDS)`:** Creates a new shuffled (optional) deck with a specified list of cards. Returns a promise resolving to the deck data as a JSON object.
 
-**### Managing Piles:**
+### Managing Piles:
 
 * **`createNewPile(deck, pileName, cards)`:** Creates a new pile named `pileName` within the provided `deck` containing the specified comma-separated list of cards. Returns a promise resolving to the pile data as a JSON object. Throws errors for missing deck or pile name.
 * **`listPile(deck, pileName)`:** Lists the contents of the pile named `pileName` within the provided `deck`. Returns a promise resolving to the pile data as a JSON object. Throws errors for missing deck or pile name.
 
-**### Drawing Cards:**
+### Drawing Cards:
 
 * **`draw(deck, count = 1)`:** Draws a specified number of cards (defaults to 1) from the provided `deck`. Returns a promise resolving to the drawn cards data as a JSON object. Throws an error for missing deck.
 * **`drawFromPile(deck, pileName, option)`:** Draws cards from the pile named `pileName` within the provided `deck`. The `option` parameter can be a number specifying the count, a string specifying comma-separated card codes, or a string specifying the draw location ("bottom" or "top"). Returns a promise resolving to the drawn cards data as a JSON object. Throws errors for missing deck or pile name.
 
-**### Returning Cards:**
+### Returning Cards:
 
 * **`returnToDeck(deck, cards)`:** Returns a specified comma-separated list of cards (optional) to the provided `deck`. Returns a promise resolving to the deck data as a JSON object. Throws an error for missing deck.
 * **`returnFromPile(deck, pileName, cards)`:** Returns a specified comma-separated list of cards (optional) from the pile named `pileName` within the provided `deck` to the deck. Returns a promise resolving to the deck data as a JSON object. Throws errors for missing deck or pile name.
 
-**### Shuffling:**
+### Shuffling:
 
 * **`shuffleDeck(deck, remaining = false)`:** Shuffles the provided `deck`. Optionally shuffles only remaining cards (refer to Deck of Cards API documentation). Returns a promise resolving to the deck data as a JSON object. Throws an error for missing deck.
 * **`shufflePile(deck, pileName)`:** Shuffles the pile named `pileName` within the provided `deck`. Returns a promise resolving to the pile data as a JSON object. Throws errors for missing deck or pile name.

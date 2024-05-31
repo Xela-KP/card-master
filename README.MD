@@ -5,7 +5,7 @@ This package provides a convenient interface to interact with the Deck of Cards 
 ## Installation
 
 ```bash
-npm install deck-of-cards-api-wrapper
+npm install card-master
 ```
 
 ## Usage
@@ -56,7 +56,7 @@ This package is licensed under the MIT License (refer to LICENSE file for detail
 * **New Deck with Shuffle (Default 1 Deck):**
 
 ```javascript
-const { createNewDeck } = require('./deck-of-cards.js'); // Assuming your file is named deck-of-cards.js
+const { createNewDeck } = require('card-master');
 
 (async () => {
   try {
@@ -71,7 +71,7 @@ const { createNewDeck } = require('./deck-of-cards.js'); // Assuming your file i
 * **New Deck with Jokers (No Shuffle):**
 
 ```javascript
-const { createNewDeck } = require('./deck-of-cards.js');
+const { createNewDeck } = require('card-master');
 
 (async () => {
   try {
@@ -86,7 +86,7 @@ const { createNewDeck } = require('./deck-of-cards.js');
 * **New Deck with Specific Number (Shuffled):**
 
 ```javascript
-const { createNewDeck } = require('./deck-of-cards.js');
+const { createNewDeck } = require('card-master');
 
 (async () => {
   try {
@@ -103,7 +103,7 @@ const { createNewDeck } = require('./deck-of-cards.js');
 * **New Pile in Existing Deck (Default Cards):**
 
 ```javascript
-const { createNewDeck, createNewPile } = require('./deck-of-cards.js');
+const { createNewDeck, createNewPile } = require('card-master');
 
 (async () => {
   try {
@@ -120,7 +120,7 @@ const { createNewDeck, createNewPile } = require('./deck-of-cards.js');
 * **New Deck with Partial Cards (No Shuffle):**
 
 ```javascript
-const { createPartialDeck } = require('./deck-of-cards.js');
+const { createPartialDeck } = require('card-master');
 
 (async () => {
   try {
@@ -138,7 +138,7 @@ const { createPartialDeck } = require('./deck-of-cards.js');
 * **List Cards in a Pile:**
 
 ```javascript
-const { listPile, createNewDeck, createNewPile } = require('./deck-of-cards.js');
+const { listPile, createNewDeck, createNewPile } = require('card-master');
 
 (async () => {
   try {
@@ -157,7 +157,7 @@ const { listPile, createNewDeck, createNewPile } = require('./deck-of-cards.js')
 * **Drawing Cards from a Pile (Specify Number):**
 
 ```javascript
-const { drawFromPile, createNewDeck, createNewPile } = require('./deck-of-cards.js');
+const { drawFromPile, createNewDeck, createNewPile } = require('card-master');
 
 (async () => {
   try {
@@ -178,7 +178,7 @@ const { drawFromPile, createNewDeck, createNewPile } = require('./deck-of-cards.
 * **Drawing a Card from a Deck:**
 
 ```javascript
-const { draw, createNewDeck } = require('./deck-of-cards.js');
+const { draw, createNewDeck } = require('card-master');
 
 (async () => {
   try {
@@ -194,7 +194,7 @@ const { draw, createNewDeck } = require('./deck-of-cards.js');
 * **Returning a Card to the Deck:**
 
 ```javascript
-const { draw, returnToDeck } = require('./deck-of-cards.js');
+const { draw, returnToDeck } = require('card-master');
 
 (async () => {
   try {
@@ -215,7 +215,7 @@ const { draw, returnToDeck } = require('./deck-of-cards.js');
 * **Shuffling an Existing Deck:**
 
 ```javascript
-const { shuffleDeck, createNewDeck } = require('./deck-of-cards.js');
+const { shuffleDeck, createNewDeck } = require('card-master');
 
 (async () => {
   try {
@@ -231,7 +231,7 @@ const { shuffleDeck, createNewDeck } = require('./deck-of-cards.js');
 * **Shuffling a Pile:**
 
 ```javascript
-const { shufflePile, createNewDeck, createNewPile } = require('./deck-of-cards.js');
+const { shufflePile, createNewDeck, createNewPile } = require('card-master');
 
 (async () => {
   try {

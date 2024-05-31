@@ -7,7 +7,7 @@
   "types": "./dist/index.d.ts",
   "type": "module",
   "scripts": {
-    "build": "node --experimental-modules build",
+    "build": "node build",
     "lint": "tsc"
   },
   "keywords": [

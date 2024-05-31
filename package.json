@@ -2,14 +2,20 @@
   "name": "card-master",
   "version": "1.0.0",
   "description": "A Library that abstracts deck of cards api",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
-  "devDependencies": {
-    "typescript": "^5.4.5"
-  }
+  "keywords": [
+    "card",
+    "cards",
+    "deck",
+    "cards manager",
+    "playing cards",
+    "dealer"
+  ],
+  "author": "xela-dev",
+  "license": "MIT"
 }

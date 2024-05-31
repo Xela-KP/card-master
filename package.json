@@ -1,5 +1,5 @@
 {
-  "name": "@xela-kp/card-master",
+  "name": "card-master",
   "version": "1.0.2",
   "description": "A Library that abstracts deck of cards api",
   "main": "./dist/index.js",
@@ -8,7 +8,7 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Xela-KP/card-master"
+    "url": "https://github.com/Xela-KP/card-master.git"
   },
   "scripts": {
     "build": "node build",
@@ -24,8 +24,10 @@
   ],
   "author": "xela-dev",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
-    "@changesets/cli": "^2.27.5",
     "typescript": "^5.4.5"
   },
   "dependencies": {
